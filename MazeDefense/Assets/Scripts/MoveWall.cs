@@ -7,6 +7,10 @@ public class MoveWall : MonoBehaviour
 
     [SerializeField]
     private Tilemap tilemap;
+    [SerializeField]
+    private float tempo;
+    [SerializeField]
+    private int x,y;
 
     private bool isMoving = false;
     // Start is called before the first frame update
@@ -56,7 +60,7 @@ public class MoveWall : MonoBehaviour
             Vector3Int currentCell = tilemap.WorldToCell(transform.position);
 
             // Calculate the position of the target cell one tile to the left
-            Vector3Int targetCell = currentCell + new Vector3Int(1, 0, 0);
+            Vector3Int targetCell = currentCell + new Vector3Int(x, y, 0);
 
             // Get the world position of the target cell
             Vector3 targetPosition = tilemap.GetCellCenterWorld(targetCell);
@@ -68,7 +72,7 @@ public class MoveWall : MonoBehaviour
             isMoving = true;
 
             // Call the ReturnToOriginalPosition method after 3 seconds
-            Invoke("ReturnToOriginalPosition", 3f);
+            Invoke("ReturnToOriginalPosition", tempo);
         }
     }
 
@@ -78,7 +82,7 @@ public class MoveWall : MonoBehaviour
         Vector3Int currentCell = tilemap.WorldToCell(transform.position);
 
             // Calculate the position of the target cell one tile to the left
-        Vector3Int targetCell = currentCell + new Vector3Int(-1, 0, 0);
+        Vector3Int targetCell = currentCell + new Vector3Int(-x, -y, 0);
 
             // Get the world position of the target cell
         Vector3 targetPosition = tilemap.GetCellCenterWorld(targetCell);
