@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80901e8aa5be4654cb306546bc65c8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 5171585192020639539, guid: ab57a16e6c0aff34995d7de32ea1c49b, type: 3}
+  Enemy: {fileID: 5419670064884981565, guid: eedd20962beb7944eb6981f0c5493a9d, type: 3}
   type_enemy:
   - 
   - Red

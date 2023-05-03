@@ -33,16 +33,12 @@ public class Enemy_Movement : MonoBehaviour
     {
         if (collision.tag == "Waypoint")
         {
-
-            
             target = collision.GetComponent<Waypoint>().next_waypoints[direction].transform;
             direction = 0;
         }
         if (collision.tag == "Rotation_Path")
-        {
-            
+        {  
             direction = collision.GetComponent<Change_Direction>().path_direction;
-
         }
     }
 }

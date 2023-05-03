@@ -5,17 +5,8 @@ using UnityEngine;
 
 public class Enemy_Collisions : MonoBehaviour
 {
-   
-    float time;
-    bool counting_timer;
-    float speed_memory;
     private void Start()
     {
-
-
-        time = 0;
-        counting_timer = false;
-
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
