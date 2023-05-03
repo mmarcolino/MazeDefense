@@ -3,12 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Waypoint
+  - Rotation_Path
+  - Enemy
+  - Enemy_Spawner
+  - Trap
+  - Tag_teste
+  - End
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Paths
   - Water
   - UI
   - 
