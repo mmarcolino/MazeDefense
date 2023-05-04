@@ -11,6 +11,8 @@ TagManager:
   - Trap
   - Tag_teste
   - End
+  - Gate
+  - Button
   layers:
   - Default
   - TransparentFX
