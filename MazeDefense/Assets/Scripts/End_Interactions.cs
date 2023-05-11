@@ -1,28 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class End_Interactions : MonoBehaviour
 {
-    private int life;
-    private void Start()
+    public float life = 100f;
+    public Image lifeBar;
+    public void Start()
     {
-        life = 10;
+        life = 100;
     }
     
     
-    public void reduce_life()
+    public void Update()
     {
-        life--;
-        Debug.Log("Vida Atual" + life);
-        if (life == 0)
-        {
-            end_scene();
+        if(Input.GetKeyDown(KeyCode.Space)){
+            reduce_life();
+        }
+
+        if (life<=0){
+            SceneManager.LoadScene("main_menu");
         }
     }
-    private void end_scene()
+    public void reduce_life()
     {
-
+        life -= 10;
+        lifeBar.fillAmount = life / 100f;
     }
 
 }
