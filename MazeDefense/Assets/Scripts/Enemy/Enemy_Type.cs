@@ -15,7 +15,7 @@ public class Enemy_Type : MonoBehaviour
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.white;
             type = new_type;
-            speed = 2f;
+            speed = 1f;
             GetComponent<Enemy_Movement>().speed = speed;
         }
 
@@ -25,7 +25,7 @@ public class Enemy_Type : MonoBehaviour
            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
            spriteRenderer.color = Color.red;
            type = new_type;
-            speed = 4f;
+            speed = 1f;
            GetComponent<Enemy_Movement>().speed = speed;
         }
         

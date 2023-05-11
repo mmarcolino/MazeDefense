@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed;
     private Transform target;
     [SerializeField] Transform starting_waypoint;
     [SerializeField] public int direction;
