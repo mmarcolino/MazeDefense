@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
 
     public void StartGame() {
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene("Fase_de_teste");
     }
 
     public void OpenSettings() {
