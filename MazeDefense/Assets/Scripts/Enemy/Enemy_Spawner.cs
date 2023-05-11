@@ -13,7 +13,10 @@ public class Enemy_Spawner : MonoBehaviour
     public int time_between_enemys;
     public int min_time_between_enemys;
     public int max_time_between_enemys;
-    
+    public Transform nearest_waypoint;
+    public Transform final_waypoint;
+
+
     void Start()
     {
         StartCoroutine(spawner());
@@ -35,6 +38,8 @@ public class Enemy_Spawner : MonoBehaviour
         {
             Transform new_enemy = Instantiate(Enemy, transform.position, transform.rotation);     
             new_enemy.GetComponent<Enemy_Type>().change_type(type_enemy[Random.Range(0, type_enemy.Length)]);
+            new_enemy.GetComponent<Enemy_Movement>().starting_waypoint = nearest_waypoint;
+            new_enemy.GetComponent<Enemy_Movement>().final_waypoint = final_waypoint;
             if (randomize_time_between_enemys)
             {
                 yield return new WaitForSeconds(Random.Range(min_time_between_enemys, max_time_between_enemys));
