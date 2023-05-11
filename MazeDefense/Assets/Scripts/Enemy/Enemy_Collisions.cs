@@ -34,6 +34,7 @@ public class Enemy_Collisions : MonoBehaviour
         if(collision.tag == "End")
         {
             Destroy(gameObject);
+            collision.GetComponent<End_Interactions>().reduce_life();
         }
     }
 }
