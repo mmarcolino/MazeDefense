@@ -35,6 +35,24 @@ public class Graph : MonoBehaviour
         //TODO implementar código para imprimir gizmos para visualizar a aresta no projeto
     }
 
+    public void RemoveEdge(Transform from, Transform to) 
+    {
+        Node v = FindNode(from); //recupera o waypoint (transform) do vértice v
+        Node w = FindNode(to);  //recupera o waypoint (transform) do vértice w
+        Edge edge = null;
+
+        foreach (Edge e in edges)
+        {
+            if (e.startNode.getWaypoint() == v.getWaypoint() && e.endNode.getWaypoint() == w.getWaypoint())
+            {
+                edge = e;
+                edges.Remove(e);
+                v.edgeList.Remove(e);
+                break;
+            }
+        }
+    }
+
     //Função de encontrar o waypoint (transform)
     public Node FindNode(Transform wp)
     {

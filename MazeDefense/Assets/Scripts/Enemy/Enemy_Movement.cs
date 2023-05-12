@@ -12,13 +12,17 @@ public class Enemy_Movement : MonoBehaviour
     [SerializeField] public Transform final_waypoint;
     [SerializeField] public int direction;
     List<Transform> path;
+    Transform currentWp;
+    GraphManager gm;
     int counter = 0;
   
     
 
     void Start()
     {
-        path = GameObject.Find("GraphManager").GetComponent<GraphManager>().getPath(starting_waypoint, final_waypoint);
+        currentWp = starting_waypoint;
+        gm = GameObject.Find("GraphManager").GetComponent<GraphManager>();
+        path = gm.getPath(starting_waypoint, final_waypoint);
         //starting_waypoint = GameObject.Find("Waypoints").transform.GetChild(0);
         direction = 0;
         target = path[0];   
@@ -26,8 +30,15 @@ public class Enemy_Movement : MonoBehaviour
 
     void Update()
     {
+        if (gm.flag)
+        {
+            gm.flag = false;
+            path = gm.getPath(currentWp, final_waypoint);
+            target = path[0];
+            counter = 0;
+        }
+        
         Vector3 dir = target.position - transform.position;
-       
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
     }
@@ -35,6 +46,7 @@ public class Enemy_Movement : MonoBehaviour
     {
         if (collision.tag == "Waypoint")
         {
+            currentWp = path[counter];
             counter++;
             target = path[counter];
             direction = 0;

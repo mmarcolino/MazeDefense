@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class Enemy_Spawner : MonoBehaviour
     public int max_time_between_enemys;
     public Transform nearest_waypoint;
     public Transform final_waypoint;
+    public List<GameObject> rotate;
+
 
 
     void Start()

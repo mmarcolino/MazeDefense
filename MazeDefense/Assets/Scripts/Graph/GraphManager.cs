@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,8 @@ public class GraphManager : MonoBehaviour
 {
     public GameObject waypoints;
     public GameObject specialWaypoint;
+    public List<GameObject> rotate;
+    public Boolean flag;
     [HideInInspector] Graph graph;
     
     // Start is called before the first frame update
@@ -43,7 +46,29 @@ public class GraphManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (GameObject r in rotate)
+        {
+            if(r.GetComponent<ChangeTileOnClick>().removeLeft == true)
+            {
+                Transform wp = r.GetComponent<ChangeTileOnClick>().this_waypoint;
+                Transform left = r.GetComponent<ChangeTileOnClick>().left_waypoint;
+                Transform right = r.GetComponent<ChangeTileOnClick>().right_waypoint;
+                graph.RemoveEdge(wp, left);
+                graph.AddEdge(wp, right);
+                flag = true;
+                r.GetComponent<ChangeTileOnClick>().removeLeft = false;
+            }
+            else if(r.GetComponent<ChangeTileOnClick>().removeRight == true)
+            {
+                Transform wp = r.GetComponent<ChangeTileOnClick>().this_waypoint;
+                Transform right = r.GetComponent<ChangeTileOnClick>().right_waypoint;
+                Transform left = r.GetComponent<ChangeTileOnClick>().left_waypoint;
+                graph.RemoveEdge(wp, right);
+                graph.AddEdge(wp, left);
+                flag = true;
+                r.GetComponent<ChangeTileOnClick>().removeRight = false;
+            }
+        }
     }
 
     public List<Transform> getPath(Transform first, Transform final)
