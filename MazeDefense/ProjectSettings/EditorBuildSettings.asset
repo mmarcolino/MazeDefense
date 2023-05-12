@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fase_de_teste.unity
     guid: 327f1a5cdbe7d24429bd7e1dc5c87c3e
+  - enabled: 1
+    path: Assets/Scenes/Maps/Forest_Scene.unity
+    guid: d4172a3ce5e4da549b98714cfad58017
   m_configObjects: {}
