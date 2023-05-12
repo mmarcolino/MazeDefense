@@ -12,8 +12,6 @@ public class Enemy_Type : MonoBehaviour
         if (new_type.Equals("White"))
         {
 
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.color = Color.white;
             type = new_type;
             speed = 1f;
             GetComponent<Enemy_Movement>().speed = speed;
@@ -21,9 +19,13 @@ public class Enemy_Type : MonoBehaviour
 
         if (new_type.Equals("Red"))
         {
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
-           SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-           spriteRenderer.color = Color.red;
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            sr.color = Color.red;
+        }
+
            type = new_type;
             speed = 1f;
            GetComponent<Enemy_Movement>().speed = speed;

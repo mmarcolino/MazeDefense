@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80901e8aa5be4654cb306546bc65c8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 5419670064884981565, guid: eedd20962beb7944eb6981f0c5493a9d, type: 3}
+  Enemy: {fileID: 5462931754965315215, guid: eedd20962beb7944eb6981f0c5493a9d, type: 3}
   type_enemy:
   - 
   - Red
@@ -81,3 +81,5 @@ MonoBehaviour:
   time_between_enemys: 0
   min_time_between_enemys: 4
   max_time_between_enemys: 5
+  nearest_waypoint: {fileID: 0}
+  final_waypoint: {fileID: 0}
