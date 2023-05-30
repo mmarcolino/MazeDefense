@@ -33,7 +33,11 @@ public class Enemy_Movement : MonoBehaviour
         if (gm.flag)
         {
             gm.flag = false;
-            path = gm.getPath(currentWp, final_waypoint);
+            if (Vector3.Distance(transform.position, currentWp.position) < Vector3.Distance(transform.position, target.position))
+                path = gm.getPath(currentWp, final_waypoint);
+            else
+                path = gm.getPath(target, final_waypoint);
+
             target = path[0];
             counter = 0;
         }
