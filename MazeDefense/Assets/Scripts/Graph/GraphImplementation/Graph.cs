@@ -65,10 +65,6 @@ public class Graph : MonoBehaviour
     }
 
     //Função para calcular a distância entre os waypoints (comprimento da aresta)
-    float distance(Node v, Node w)
-    {
-        return (Vector3.SqrMagnitude(v.getWaypoint().transform.position - w.getWaypoint().transform.position));
-    }
 
     //Transform[]
     public List<Transform> AStar(Transform start, Transform end)
@@ -81,17 +77,16 @@ public class Graph : MonoBehaviour
         }
 
         List<Node> open = new List<Node>(); //incializamos uma lista de vértices visitados
-        List<Transform> openAsVertex = new List<Transform>(); //gambiarra 
+        List<Transform> openAsTransform = new List<Transform>(); //gambiarra 
         List<Node> closed = new List<Node>(); //incializamos uma lista de vértices explorados
+        List<Transform> closedAsTransform = new List<Transform>(); // gambiarra para closed
         float gScore = 0;
         float hScore = 0;
         float fScore = 0;
-        float lastFscore = 0;
-        bool isBetter;
 
         //Os custos do vértice de inicio
         first.g = 0; //custo g = distância do primeiro vértice até o atual
-        first.h = distance(first, final); //custo h = distância do vértice atual até o final
+        first.h = Vector3.Distance(first.getWaypoint().position, final.getWaypoint().position); //custo h = distância do vértice atual até o final
         first.f = first.h; // Custo final é a soma dos dois
 
         open.Add(first); //coloca o primeiro vértice na lista de vértices a serem analisados
@@ -110,39 +105,29 @@ public class Graph : MonoBehaviour
             {
                 neighbour = e.endNode; //recuperamos o vizinho 
 
-                if (closed.IndexOf(neighbour) > 1)
+                if (closedAsTransform.Contains(neighbour.getWaypoint()))
                     continue; //se já tivermos visitado o vizinho, o ignoramos
 
-                gScore = thisNode.g + distance(thisNode, neighbour); //incrementamos a distância do inicio até o atual com base do vértice passado
-                hScore = distance(neighbour, final);
-                fScore = gScore + hScore;
-
-                if (openAsVertex.IndexOf(neighbour.getWaypoint()) == -1) //se o vizinho não tiver sido visitado
+                gScore = thisNode.g + Vector3.Distance(thisNode.getWaypoint().position, neighbour.getWaypoint().position); //incrementamos a distância do inicio até o atual com base do vértice passado
+                hScore = Vector3.Distance(neighbour.getWaypoint().position, final.getWaypoint().position); // calculamos a heuristica (disância até o final)
+                fScore = gScore + hScore; //a soma dos dois
+                if(fScore < neighbour.f || ! openAsTransform.Contains(neighbour.getWaypoint())) //se f for menor que a do vizinho ou se o vizinho não estiver na lista de descorbertos
                 {
-                    open.Add(neighbour); //adiciona o vizinho na lista de visitados
-                    openAsVertex.Add(neighbour.getWaypoint());
-                    isBetter = true; //achamos um caminho melhor
+                    //Setandos valores para o vizinho
+                    neighbour.g = gScore; 
+                    neighbour.h = hScore;
+                    neighbour.f = fScore;
+                    //Setando o vértice de origem do vizinho
+                    neighbour.cameFrom = thisNode;
+                    if (! openAsTransform.Contains(neighbour.getWaypoint()))
+                    {
+                        open.Add(neighbour); //adiciona o vizinho na lista de visitados
+                        openAsTransform.Add(neighbour.getWaypoint());
+                    }       
                 }
-                else if (fScore < lastFscore) 
-                {
-                    isBetter = true;  //achamos um caminho melhor
-                    open.Add(neighbour); //adiciona o vizinho na lista de visitados
-                    openAsVertex.Add(neighbour.getWaypoint());
-                }
-                else
-                    isBetter = false;  //não achamos um caminho melhor
-
-                if (isBetter) //se for uma melhor solução 
-                {
-                    neighbour.cameFrom = thisNode; //atualiza a origem
-                    neighbour.g = gScore; //atualiza o custo g
-                    neighbour.h = distance(thisNode, final); //atualiza o custo h 
-                    neighbour.f = neighbour.g + neighbour.h; //atualiza o custo final
-                    lastFscore = fScore;
-                }
-
             }
             closed.Add(thisNode); //adicionamos o vértice para a lista de explorados
+            closedAsTransform.Add(thisNode.getWaypoint());
         }
         return null; //null
     }
