@@ -62,7 +62,10 @@ public class GraphManager : MonoBehaviour
                     for (int i = 0; i < spawner.transform.childCount; i++)
                     {
                         Transform enemy = spawner.transform.GetChild(i);
-                        List<Transform> path = new List<Transform>(getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint));
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
                         enemy.GetComponent<Enemy_Movement>().path = path;
                         enemy.GetComponent<Enemy_Movement>().counter = 0;
                     }
@@ -82,7 +85,11 @@ public class GraphManager : MonoBehaviour
                     for (int i = 0; i < spawner.transform.childCount; i++)
                     {
                         Transform enemy = spawner.transform.GetChild(i);
-                        List<Transform> path = new List<Transform>(getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint));
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
+
                         enemy.GetComponent<Enemy_Movement>().path = path;
                         enemy.GetComponent<Enemy_Movement>().counter = 0;
                     }

@@ -30,9 +30,6 @@ public class Enemy_Movement : MonoBehaviour
 
     void Update()
     {
-
-        if (path == null)
-            Destroy(gameObject);
         
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
