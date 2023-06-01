@@ -7,14 +7,14 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy_Movement : MonoBehaviour
 {
     public float speed;
-    private Transform target;
+    public Transform target;
     [SerializeField] public Transform starting_waypoint;
     [SerializeField] public Transform final_waypoint;
     [SerializeField] public int direction;
-    List<Transform> path;
-    Transform currentWp;
+    public List<Transform> path;
+    public Transform currentWp;
     GraphManager gm;
-    int counter = 0;
+    public int counter = 0;
   
     
 
@@ -30,17 +30,9 @@ public class Enemy_Movement : MonoBehaviour
 
     void Update()
     {
-        if (gm.flag)
-        {
-            gm.flag = false;
-            if (Vector3.Distance(transform.position, currentWp.position) < Vector3.Distance(transform.position, target.position))
-                path = gm.getPath(currentWp, final_waypoint);
-            else
-                path = gm.getPath(target, final_waypoint);
 
-            target = path[0];
-            counter = 0;
-        }
+        if (path == null)
+            Destroy(gameObject);
         
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
@@ -48,6 +40,7 @@ public class Enemy_Movement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.tag == "Waypoint")
         {
             currentWp = path[counter];

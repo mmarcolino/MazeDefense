@@ -12,6 +12,7 @@ public class GraphManager : MonoBehaviour
     public GameObject specialWaypoint;
     public List<GameObject> rotate;
     public Boolean flag;
+    public List<Enemy_Spawner> enemySpawners;
     [HideInInspector] Graph graph;
     
     // Start is called before the first frame update
@@ -56,6 +57,16 @@ public class GraphManager : MonoBehaviour
                 graph.RemoveEdge(wp, left);
                 graph.AddEdge(wp, right);
                 flag = true;
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        List<Transform> path = new List<Transform>(getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint));
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
                 r.GetComponent<ChangeTileOnClick>().removeLeft = false;
             }
             else if(r.GetComponent<ChangeTileOnClick>().removeRight == true)
@@ -66,6 +77,16 @@ public class GraphManager : MonoBehaviour
                 graph.RemoveEdge(wp, right);
                 graph.AddEdge(wp, left);
                 flag = true;
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        List<Transform> path = new List<Transform>(getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint));
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
                 r.GetComponent<ChangeTileOnClick>().removeRight = false;
             }
         }
