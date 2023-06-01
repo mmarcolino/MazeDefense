@@ -41101,6 +41101,14 @@ PrefabInstance:
       propertyPath: rotate.Array.data[1]
       value: 
       objectReference: {fileID: 766385680}
+    - target: {fileID: 2188391957222305869, guid: ab44b6183e023bb43956145d5335be72, type: 3}
+      propertyPath: enemySpawners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188391957222305869, guid: ab44b6183e023bb43956145d5335be72, type: 3}
+      propertyPath: enemySpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1949758367}
     - target: {fileID: 2188391957222305871, guid: ab44b6183e023bb43956145d5335be72, type: 3}
       propertyPath: m_Name
       value: GraphManager
@@ -42521,6 +42529,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+--- !u!114 &1949758367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+  m_PrefabInstance: {fileID: 1871324386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80901e8aa5be4654cb306546bc65c8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063742322
 GameObject:
   m_ObjectHideFlags: 0
