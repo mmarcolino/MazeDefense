@@ -334,7 +334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: Red
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
@@ -714,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[0]
-      value: White
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[1]
-      value: Red
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: n_enemys_per_wave.Array.size
@@ -1008,11 +1008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[0]
-      value: White
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[1]
-      value: Red
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: n_enemys_per_wave.Array.size
@@ -1228,7 +1228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: White
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
@@ -37516,7 +37516,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: Red
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
