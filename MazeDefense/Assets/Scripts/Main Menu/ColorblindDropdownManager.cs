@@ -22,17 +22,24 @@ public class ColorblindDropdownManager : MonoBehaviour
     public TMPro.TMP_Dropdown dropdown;
     public TMP_Text selectedName;
 
+    
     public void Dropdown_IndexChanged(int index) 
     {
-        selectedName.text = names[index];
-
-        // GameObject obj = GameObject.Find("Main Camera");
-        // obj.GetComponent<ColorBlindFilter>().handleMode(index);
+        index = dropdown.value;
+        Debug.Log("INDEX:" + names[index]);
+       
+        GameObject obj = GameObject.Find("Main Camera");
+        Debug.Log("MODE: " + index);
+        obj.GetComponent<ColorBlindFilter>().handleMode(index);
+        obj.GetComponent<ColorBlindFilter>().change_mode();
     }
 
     void Start() 
     {
+        
         PopulateList();
+        selectedName.text = "Normal";
+
     }
 
     void PopulateList() 

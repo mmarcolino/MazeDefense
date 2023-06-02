@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public enum ColorBlindMode
 {
@@ -18,6 +19,8 @@ public class ColorBlindFilter : MonoBehaviour
 {
     public ColorBlindMode mode = ColorBlindMode.Normal;
     private ColorBlindMode previousMode = ColorBlindMode.Normal;
+    private RenderTexture source_mem;
+    private RenderTexture dest_mem;
 
     public bool showDifference = false;
 
@@ -46,9 +49,15 @@ public class ColorBlindFilter : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
+        source_mem = source;
+        dest_mem = destination;
+        change_mode();
+    }
+    public void change_mode()
+    {
         if (mode == ColorBlindMode.Normal)
         {
-            Graphics.Blit(source, destination);
+            Graphics.Blit(source_mem, dest_mem);
             return;
         }
 
@@ -60,10 +69,11 @@ public class ColorBlindFilter : MonoBehaviour
             previousMode = mode;
         }
 
-        Graphics.Blit(source, destination, material, showDifference ? 1 : 0);
+        Graphics.Blit(source_mem, dest_mem, material, showDifference ? 1 : 0);
     }
 
     public void handleMode(int index) {
+        Debug.Log("MODE: " + index);
         mode = (ColorBlindMode)index;
     }
 }
