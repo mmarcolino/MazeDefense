@@ -334,7 +334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: Red
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
@@ -536,63 +536,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34252882, y: 0.34639645}
   m_EdgeRadius: 0
---- !u!1001 &660169370
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.21714634
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5919005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 105.10355
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361392, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611850590995361395, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
 --- !u!1 &697679494
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,17 +609,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34252882, y: 0.34639645}
   m_EdgeRadius: 0
---- !u!114 &822611429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7611850588885691745, guid: 95a966b4a831e3e498fe0e4563cd2cef, type: 3}
-  m_PrefabInstance: {fileID: 660169370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &999851329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,6 +685,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1269866986}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+      propertyPath: rotate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: time_between_waves
       value: 6
       objectReference: {fileID: 0}
@@ -760,6 +696,10 @@ PrefabInstance:
       propertyPath: time_between_enemys
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+      propertyPath: rotate.Array.data[0]
+      value: 
+      objectReference: {fileID: 160611327}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.size
       value: 2
@@ -774,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[0]
-      value: White
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[1]
-      value: Red
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: n_enemys_per_wave.Array.size
@@ -1039,6 +979,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1032099080}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+      propertyPath: rotate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: time_between_waves
       value: 6
       objectReference: {fileID: 0}
@@ -1046,6 +990,10 @@ PrefabInstance:
       propertyPath: time_between_enemys
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+      propertyPath: rotate.Array.data[0]
+      value: 
+      objectReference: {fileID: 160611327}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.size
       value: 2
@@ -1060,11 +1008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[0]
-      value: White
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[1]
-      value: Red
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: n_enemys_per_wave.Array.size
@@ -1280,7 +1228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: White
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
@@ -37237,7 +37185,7 @@ PrefabInstance:
     - target: {fileID: 9030408482482351283, guid: 626ca4a71fc27c9409f1d2b5fa7c7793, type: 3}
       propertyPath: lifeBar
       value: 
-      objectReference: {fileID: 822611429}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 626ca4a71fc27c9409f1d2b5fa7c7793, type: 3}
 --- !u!1 &1666406754
@@ -37568,7 +37516,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4028944977473985154, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: type
-      value: Red
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 4028944977473985164, guid: 9758481c22a764047890aafa5936a6cc, type: 3}
       propertyPath: m_Name
