@@ -6,29 +6,29 @@ public class Enemy_Type : MonoBehaviour
 {
     public string type;
     private float speed;
+    public Sprite Warrior;
+    public Sprite Archer;
    
     public void change_type(string new_type)
     {
-        if (new_type.Equals("White"))
+        if (new_type.Equals("Warrior"))
         {
 
             type = new_type;
             speed = 1f;
             GetComponent<Enemy_Movement>().speed = speed;
+            Sprite novaSprite = Warrior;
+            GetComponentInChildren<SpriteRenderer>().sprite = novaSprite;
         }
 
-        if (new_type.Equals("Red"))
+        if (new_type.Equals("Archer"))
         {
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-        foreach (SpriteRenderer sr in spriteRenderers)
-        {
-            sr.color = Color.red;
-        }
-
-           type = new_type;
+            Debug.Log("Caiu aq");
+            Sprite novaSprite = Archer;
+            GetComponentInChildren<SpriteRenderer>().sprite = novaSprite;
+            type = new_type;
             speed = 1f;
-           GetComponent<Enemy_Movement>().speed = speed;
+            GetComponent<Enemy_Movement>().speed = speed;
         }
         
     }

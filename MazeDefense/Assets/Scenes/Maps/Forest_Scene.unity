@@ -42485,7 +42485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: time_between_enemys
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: rotate.Array.data[0]
@@ -42497,7 +42497,11 @@ PrefabInstance:
       objectReference: {fileID: 766385680}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: type_enemy.Array.data[0]
-      value: White
+      value: Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
+      propertyPath: type_enemy.Array.data[1]
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7160552721345875831, guid: a546de33edb8d4e45940ba00a240f969, type: 3}
       propertyPath: n_enemys_per_wave.Array.size
