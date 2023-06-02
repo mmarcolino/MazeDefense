@@ -11,7 +11,9 @@ public class GraphManager : MonoBehaviour
     public GameObject waypoints;
     public GameObject specialWaypoint;
     public List<GameObject> rotate;
+    public List<GameObject> gates;
     public Boolean flag;
+    public List<Enemy_Spawner> enemySpawners;
     [HideInInspector] Graph graph;
     
     // Start is called before the first frame update
@@ -48,25 +50,87 @@ public class GraphManager : MonoBehaviour
     {
         foreach (GameObject r in rotate)
         {
-            if(r.GetComponent<ChangeTileOnClick>().removeLeft == true)
+            Rotate_Path rp = r.GetComponent<Rotate_Path>();
+            if (rp.rotated == true)
             {
-                Transform wp = r.GetComponent<ChangeTileOnClick>().this_waypoint;
-                Transform left = r.GetComponent<ChangeTileOnClick>().left_waypoint;
-                Transform right = r.GetComponent<ChangeTileOnClick>().right_waypoint;
-                graph.RemoveEdge(wp, left);
-                graph.AddEdge(wp, right);
-                flag = true;
-                r.GetComponent<ChangeTileOnClick>().removeLeft = false;
+                rp.rotated = false;
+                List<Transform> list = new List<Transform>();
+                Node vertex = graph.FindNode(rp.this_waypoint);
+                List<Edge> edges = new List<Edge>();
+                foreach (Edge edge in vertex.edgeList)
+                {
+                    if(!rp.adjacencyList.Contains(edge.endNode.getWaypoint()))
+                    {
+                        edges.Add(new Edge(vertex, edge.endNode));
+                    }
+                    else 
+                        list.Add(edge.endNode.getWaypoint());
+                }
+                foreach(Edge edge in edges)
+                {
+                    graph.RemoveEdge(edge.startNode.getWaypoint(), edge.endNode.getWaypoint());
+                }
+                foreach (Transform teste in rp.adjacencyList)
+                {
+                    if(!list.Contains(teste.transform))
+                    {
+                        graph.AddEdge(vertex.getWaypoint(), teste.transform);
+                    }
+                }
+
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
             }
-            else if(r.GetComponent<ChangeTileOnClick>().removeRight == true)
+        }
+        foreach(GameObject gate in gates)
+        {
+            Gate gate_script = gate.GetComponent<Gate>();
+            if (gate_script.changed && gate_script.open) 
             {
-                Transform wp = r.GetComponent<ChangeTileOnClick>().this_waypoint;
-                Transform right = r.GetComponent<ChangeTileOnClick>().right_waypoint;
-                Transform left = r.GetComponent<ChangeTileOnClick>().left_waypoint;
-                graph.RemoveEdge(wp, right);
-                graph.AddEdge(wp, left);
-                flag = true;
-                r.GetComponent<ChangeTileOnClick>().removeRight = false;
+                graph.AddEdge(gate_script.first_waypoint, gate_script.next_waypoint);
+
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
+            }
+            else if (gate_script.changed && !gate_script.open)
+            {
+                graph.RemoveEdge(gate_script.first_waypoint, gate_script.next_waypoint);
+
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
             }
         }
     }
