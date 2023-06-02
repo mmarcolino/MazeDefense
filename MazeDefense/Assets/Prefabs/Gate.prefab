@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 455603203739612035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.421, y: 0.656, z: 3.4139986}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.35304, y: 0.35304, z: 1.1768}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455603203634891320}
@@ -135,6 +135,10 @@ MonoBehaviour:
   new_sprite: {fileID: 21300000, guid: bce93693334505d4687787e747bc7455, type: 3}
   delay_time: 5
   visual: {fileID: 455603203634891270}
+  can_change: 0
+  clickRotate: 0
+  clickGate: 0
+  finished: 0
 --- !u!114 &455603203739612037
 MonoBehaviour:
   m_ObjectHideFlags: 0
