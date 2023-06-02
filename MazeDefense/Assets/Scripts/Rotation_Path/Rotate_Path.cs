@@ -24,10 +24,10 @@ public class Rotate_Path : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<ChangeTileOnClick>().click) 
+        if (gameObject.GetComponent<ChangeTileOnClick>().clickRotate) 
         {
             adjacencyList = new List<Transform>();
-            gameObject.GetComponent<ChangeTileOnClick>().click = false;
+            gameObject.GetComponent<ChangeTileOnClick>().clickRotate = false;
             rotated = true; //sinaliza que houve rotação
             for (int i = 0; i < number_of_connections - 1; i++)
             {

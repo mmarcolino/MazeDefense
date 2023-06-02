@@ -64,6 +64,16 @@ public class Graph : MonoBehaviour
         return null;
     }
 
+    public Edge FindEdge(Transform from, Transform to)
+    {
+        foreach (Edge e in edges)
+        {
+            if (e.startNode.getWaypoint() == from && e.endNode == to)
+                return e;
+        }
+        return null;
+    }
+
     //Função para calcular a distância entre os waypoints (comprimento da aresta)
 
     //Transform[]
