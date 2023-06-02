@@ -101,6 +101,19 @@ public class GraphManager : MonoBehaviour
             {
                 gate_script.changed = false;
                 graph.AddEdge(gate_script.first_waypoint, gate_script.next_waypoint);
+                foreach (Enemy_Spawner spawner in enemySpawners)
+                {
+                    for (int i = 0; i < spawner.transform.childCount; i++)
+                    {
+                        Transform enemy = spawner.transform.GetChild(i);
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        List<Transform> path = new List<Transform>();
+                        if (pathCollection == null) Destroy(enemy.gameObject);
+                        else path.AddRange(pathCollection);
+                        enemy.GetComponent<Enemy_Movement>().path = path;
+                        enemy.GetComponent<Enemy_Movement>().counter = 0;
+                    }
+                }
             }
             else if (gate_script.changed && !gate_script.open)
             {
@@ -113,7 +126,7 @@ public class GraphManager : MonoBehaviour
                     for (int i = 0; i < spawner.transform.childCount; i++)
                     {
                         Transform enemy = spawner.transform.GetChild(i);
-                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().currentWp, enemy.GetComponent<Enemy_Movement>().final_waypoint);
+                        IEnumerable<Transform> pathCollection = getPath(enemy.GetComponent<Enemy_Movement>().target, enemy.GetComponent<Enemy_Movement>().final_waypoint);
                         List<Transform> path = new List<Transform>();
                         if (pathCollection == null) Destroy(enemy.gameObject);
                         else path.AddRange(pathCollection);
