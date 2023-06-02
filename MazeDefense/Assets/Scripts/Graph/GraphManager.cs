@@ -99,8 +99,8 @@ public class GraphManager : MonoBehaviour
             Gate gate_script = gate.GetComponent<Gate>();
             if (gate_script.changed && gate_script.open) 
             {
+                gate_script.changed = false;
                 graph.AddEdge(gate_script.first_waypoint, gate_script.next_waypoint);
-
                 foreach (Enemy_Spawner spawner in enemySpawners)
                 {
                     for (int i = 0; i < spawner.transform.childCount; i++)
@@ -117,7 +117,9 @@ public class GraphManager : MonoBehaviour
             }
             else if (gate_script.changed && !gate_script.open)
             {
-                graph.RemoveEdge(gate_script.first_waypoint, gate_script.next_waypoint);
+                gate_script.changed = false;
+                Edge e = graph.FindEdge(gate_script.first_waypoint.transform, gate_script.next_waypoint.transform);
+                graph.RemoveEdge(e.startNode.getWaypoint(), e.endNode.getWaypoint());
 
                 foreach (Enemy_Spawner spawner in enemySpawners)
                 {

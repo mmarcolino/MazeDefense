@@ -41,13 +41,20 @@ public class Graph : MonoBehaviour
         Node w = FindNode(to);  //recupera o waypoint (transform) do vértice w
         Edge edge = null;
 
-        foreach (Edge e in edges)
+        for (int i = 0; i < edges.Count; i++)
         {
-            if (e.startNode.getWaypoint() == v.getWaypoint() && e.endNode.getWaypoint() == w.getWaypoint())
+            if (edges[i].startNode.getWaypoint() == v.getWaypoint() && edges[i].endNode.getWaypoint() == w.getWaypoint())
             {
-                edge = e;
-                edges.Remove(e);
-                v.edgeList.Remove(e);
+                edge = edges[i];
+                edges.RemoveAt(i);
+                break;
+            }
+        }
+        for (int i = 0; i < v.edgeList.Count; i++)
+        {
+            if (v.edgeList[i].endNode.getWaypoint() == w.getWaypoint())
+            {
+                v.edgeList.RemoveAt(i);
                 break;
             }
         }
@@ -60,6 +67,16 @@ public class Graph : MonoBehaviour
         {
             if (n.getWaypoint() == wp)
                 return n;
+        }
+        return null;
+    }
+
+    public Edge FindEdge(Transform from, Transform to)
+    {
+        foreach (Edge e in edges)
+        {
+            if (e.startNode.getWaypoint() == from && e.endNode.getWaypoint() == to)
+                return e;
         }
         return null;
     }

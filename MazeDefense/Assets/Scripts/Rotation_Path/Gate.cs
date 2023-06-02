@@ -19,27 +19,28 @@ public class Gate : MonoBehaviour
     void Start()
     {
         changed = false;
+        open = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<ChangeTileOnClick>().click && gameObject.GetComponent<ChangeTileOnClick>().can_change == false)
+        if (gameObject.GetComponent<ChangeTileOnClick>().clickGate && gameObject.GetComponent<ChangeTileOnClick>().can_change == false)
         {
-            gameObject.GetComponent<ChangeTileOnClick>().click = false;
+            gameObject.GetComponent<ChangeTileOnClick>().clickGate = false;
             changed = true;
-            open = true;
+            open = false;
             adjacencyList = first_waypoint.GetComponent<Waypoint>().next_waypoints.ToList();
-            adjacencyList.Add(next_waypoint);
+            adjacencyList.Remove(next_waypoint);
             first_waypoint.GetComponent<Waypoint>().next_waypoints = adjacencyList.ToArray();
         }
         else if (gameObject.GetComponent<ChangeTileOnClick>().finished == true)
         {
             gameObject.GetComponent<ChangeTileOnClick>().finished = false;
             changed = true;
-            open = false;
+            open = true;
             adjacencyList = first_waypoint.GetComponent<Waypoint>().next_waypoints.ToList();
-            adjacencyList.Remove(next_waypoint);
+            adjacencyList.Add(next_waypoint);
             first_waypoint.GetComponent<Waypoint>().next_waypoints = adjacencyList.ToArray();
         }
     }

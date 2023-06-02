@@ -9,14 +9,16 @@ public class ChangeTileOnClick : MonoBehaviour
     public float delay_time;
     public GameObject visual;
       public bool can_change;
-    [HideInInspector] public bool click;
+    [HideInInspector] public bool clickRotate;
+    [HideInInspector] public bool clickGate;
     [HideInInspector] public bool finished;
     private void Start()
     {
         SpriteRenderer spriteRenderer = visual.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = original_sprite;
         can_change = true;
-        click = false;
+        clickRotate = false;
+        clickGate = false;
         finished = false;
         //adjacencyList = this_waypoint.GetComponent<Waypoint>().next_waypoints;
 
@@ -51,7 +53,7 @@ public class ChangeTileOnClick : MonoBehaviour
     {
         if (visual.GetComponent<SpriteRenderer>().sprite == original_sprite)
         {
-
+            clickGate = true;
             visual.GetComponent<SpriteRenderer>().sprite = new_sprite;
         }
         else
@@ -59,6 +61,6 @@ public class ChangeTileOnClick : MonoBehaviour
 
             visual.GetComponent<SpriteRenderer>().sprite = original_sprite;
         }
-        click = true;
+        clickRotate = true;
     }
 }
