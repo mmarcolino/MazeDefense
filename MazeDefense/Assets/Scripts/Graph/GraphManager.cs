@@ -12,6 +12,7 @@ public class GraphManager : MonoBehaviour
     public GameObject specialWaypoint;
     public List<GameObject> rotate;
     public List<GameObject> gates;
+    [HideInInspector]
     public Boolean flag;
     public List<Enemy_Spawner> enemySpawners;
     [HideInInspector] Graph graph;
