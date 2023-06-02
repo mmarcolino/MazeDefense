@@ -15,8 +15,9 @@ public class Enemy_Movement : MonoBehaviour
     public Transform currentWp;
     GraphManager gm;
     public int counter = 0;
-  
-    
+    private bool movendoDireita;
+
+
 
     void Start()
     {
@@ -25,13 +26,14 @@ public class Enemy_Movement : MonoBehaviour
         path = gm.getPath(starting_waypoint, final_waypoint);
         //starting_waypoint = GameObject.Find("Waypoints").transform.GetChild(0);
         direction = 0;
-        target = path[0];   
+        target = path[0];
     }
 
     void Update()
     {
         
         Vector3 dir = target.position - transform.position;
+        rotate(dir);
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
     }
@@ -51,4 +53,34 @@ public class Enemy_Movement : MonoBehaviour
         //    direction = collision.GetComponent<Change_Direction>().path_direction;
         //}
     }
+
+    private void rotate(Vector3 dir)
+    {
+        
+        
+
+        if (dir.x < 0)
+        {
+            movendoDireita = false;
+           
+        }
+        else if (dir.x > 0)
+        {
+            movendoDireita = true;
+            
+        }
+
+       
+        if (movendoDireita)
+        {
+           
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+        }
+        else
+        {
+           
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180, transform.eulerAngles.z);
+        }
+    }
+
 }

@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
 
     public void StartGame() {
-        SceneManager.LoadScene("Forest_Scene");
+        SceneManager.LoadScene("stages_menu");
     }
 
     public void OpenSettings() {
