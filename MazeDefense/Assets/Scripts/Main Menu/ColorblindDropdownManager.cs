@@ -38,7 +38,6 @@ public class ColorblindDropdownManager : MonoBehaviour
     {
         
         PopulateList();
-        selectedName.text = "Normal";
 
     }
 

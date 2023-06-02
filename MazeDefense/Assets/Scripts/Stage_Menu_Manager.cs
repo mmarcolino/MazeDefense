@@ -15,15 +15,15 @@ public class Stage_Menu_Manager : MonoBehaviour
     }
     public void Fase_2()
     {
-        SceneManager.LoadScene("Forest_Scene");
+        SceneManager.LoadScene("Fase1_inverno");
     }
     public void Fase_3()
     {
-        SceneManager.LoadScene("Forest_Scene");
+        SceneManager.LoadScene("Andre_fase1");
     }
     public void Fase_4()
     {
-        SceneManager.LoadScene("Forest_Scene");
+        SceneManager.LoadScene("andre_fase2");
     }
     public void Fase_5()
     {
